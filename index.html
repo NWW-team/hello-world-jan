@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hello World — Vibecoden</title>
+  <meta name="description" content="Een kleine Hello World-app over vibecoden: programmeren door te beschrijven wat je wilt." />
+  <style>
+    :root {
+      --bg: #f7f5f2;
+      --bg-card: #ffffff;
+      --ink: #1c1a17;
+      --ink-soft: #5d5850;
+      --line: #e3ded7;
+      --accent: #c2410c;
+      --accent-soft: #fde8dc;
+      --shadow: 0 1px 2px rgba(28, 26, 23, .06), 0 8px 24px rgba(28, 26, 23, .06);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #16130f;
+        --bg-card: #201c17;
+        --ink: #f3efe9;
+        --ink-soft: #a8a096;
+        --line: #332d26;
+        --accent: #fb923c;
+        --accent-soft: #3a2213;
+        --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .3);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    header { margin-bottom: 40px; }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 5px 10px;
+      border-radius: 999px;
+      margin: 0 0 20px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 7vw, 3.4rem);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin: 0 0 16px;
+      font-weight: 700;
+    }
+
+    h1 .wave {
+      display: inline-block;
+      transform-origin: 70% 70%;
+      animation: wave 2.6s ease-in-out infinite;
+    }
+
+    @keyframes wave {
+      0%, 60%, 100% { transform: rotate(0deg); }
+      10%, 30% { transform: rotate(14deg); }
+      20%, 40% { transform: rotate(-8deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .wave { animation: none; }
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      margin: 0 0 28px;
+      max-width: 56ch;
+    }
+
+    .panel {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 32px;
+    }
+
+    #greeting {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 0 0 18px;
+      min-height: 2.6rem;
+      display: flex;
+      align-items: center;
+    }
+
+    button {
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 9px;
+      padding: 11px 20px;
+      transition: transform .12s ease, opacity .12s ease;
+    }
+
+    button:hover { opacity: .9; }
+    button:active { transform: translateY(1px); }
+    button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+    .counter {
+      margin: 14px 0 0;
+      font-size: .875rem;
+      color: var(--ink-soft);
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      letter-spacing: -.01em;
+      margin: 0 0 18px;
+    }
+
+    .steps {
+      list-style: none;
+      counter-reset: step;
+      padding: 0;
+      margin: 0;
+    }
+
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding-left: 46px;
+      margin-bottom: 20px;
+    }
+
+    .steps li:last-child { margin-bottom: 0; }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 1px;
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: .85rem;
+      font-weight: 700;
+    }
+
+    .steps strong { display: block; }
+    .steps span { color: var(--ink-soft); font-size: .95rem; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      font-size: .85rem;
+      color: var(--ink-soft);
+    }
+
+    footer code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .85em;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <p class="eyebrow">Hello World</p>
+      <h1>Hallo wereld <span class="wave" aria-hidden="true">👋</span><br />ik vibecode.</h1>
+      <p class="lead">
+        Vibecoden is programmeren door in gewone taal te beschrijven wat je wilt,
+        en de computer het typewerk te laten doen. Jij bepaalt de richting,
+        de machine schrijft de regels code. Deze pagina is daar een voorbeeld van.
+      </p>
+    </header>
+
+    <main>
+      <section class="panel" aria-label="Interactieve begroeting">
+        <p id="greeting">Klik op de knop voor een nieuwe vibe.</p>
+        <button id="vibe-button" type="button">Geef me een vibe</button>
+        <p class="counter" id="counter">Nog geen vibes opgehaald.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Hoe vibecoden werkt</h2>
+        <ol class="steps">
+          <li>
+            <strong>Beschrijf wat je wilt</strong>
+            <span>Geen syntax, gewoon een zin: "maak een pagina die hallo zegt".</span>
+          </li>
+          <li>
+            <strong>Bekijk wat eruit komt</strong>
+            <span>Je krijgt werkende code terug en ziet meteen het resultaat.</span>
+          </li>
+          <li>
+            <strong>Stuur bij</strong>
+            <span>"Maak het rustiger", "voeg een knop toe". Kleine stapjes werken het best.</span>
+          </li>
+          <li>
+            <strong>Blijf zelf de baas</strong>
+            <span>Jij beoordeelt of het klopt. De computer typt, jij denkt.</span>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      Statische pagina, één bestand: <code>index.html</code>. Geen server, geen database, geen installatie.
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var vibes = [
+        "Hallo wereld! Je eerste app draait. 🎉",
+        "Code die werkt is belangrijker dan code die mooi is. ✨",
+        "Fouten zijn geen ramp, het zijn aanwijzingen. 🔍",
+        "Klein beginnen, dan uitbreiden. 🌱",
+        "Als je het kunt uitleggen, kun je het bouwen. 💬",
+        "Niemand kent alle code uit zijn hoofd. Echt niemand. 🤝",
+        "Opnieuw proberen hoort erbij. 🔁"
+      ];
+
+      var greeting = document.getElementById("greeting");
+      var button = document.getElementById("vibe-button");
+      var counter = document.getElementById("counter");
+      var clicks = 0;
+      var last = -1;
+
+      button.addEventListener("click", function () {
+        var index = last;
+        while (index === last && vibes.length > 1) {
+          index = Math.floor(Math.random() * vibes.length);
+        }
+        last = index;
+        clicks++;
+
+        greeting.textContent = vibes[index];
+        counter.textContent = clicks === 1
+          ? "1 vibe opgehaald."
+          : clicks + " vibes opgehaald.";
+      });
+    })();
+  </script>
+</body>
+</html>
